@@ -1,0 +1,27 @@
+name: 3-Oracle Stateful Invariants
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  foundry-invariants:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Foundry
+        uses: foundry-rs/foundry-toolchain@v1
+      - name: Install forge-std
+        run: forge install foundry-rs/forge-std --no-git
+      - name: Run 3-Oracle Foundry Invariant Suite
+        run: FOUNDRY_PROFILE=ci forge test --match-path "test/*.t.sol" -vvv
+  mirror-verifier:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Run 12,000-Step 256-Bit Mirror Verifier & Fault-Injection Suite
+        run: python3 scripts/verify_3_oracles.py
