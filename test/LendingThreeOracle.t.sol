@@ -89,7 +89,7 @@ contract LendingThreeOracleTest is Test, ThreeOracleBase {
         actors[0] = address(0xA11CE);
         actors[1] = address(0xB0B);
         actors[2] = address(0xCA5E);
-        actors[3] = address(0xDAVE);
+        actors[3] = address(0xDA7E);
         adapter = new LendingPoolAdapter(address(pool), actors);
         handler = new LendingFuzzHandler(pool, actors);
         _setOracleTarget(adapter);

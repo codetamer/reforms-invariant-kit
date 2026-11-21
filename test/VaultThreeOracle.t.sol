@@ -145,7 +145,7 @@ contract VaultThreeOracleTest is Test, ThreeOracleBase {
         actors[0] = address(0xA11CE);
         actors[1] = address(0xB0B);
         actors[2] = address(0xCA5E);
-        actors[3] = address(0xDAVE);
+        actors[3] = address(0xDA7E);
 
         for (uint256 i = 0; i < actors.length; ++i) {
             token.mint(actors[i], 1e12);
